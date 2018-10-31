@@ -1,0 +1,4 @@
+[submodule "meanlib"]
+	path = meanlib
+	url = git@github.com:TeamMeanMachine/meanlib.git
+	branch = master
