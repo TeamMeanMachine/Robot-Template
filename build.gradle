@@ -1,9 +1,10 @@
-import edu.wpi.first.gradlerio.frc.FRCJavaArtifact
-import edu.wpi.first.gradlerio.frc.RoboRIO
+import jaci.openrio.gradle.GradleRIOPlugin
+import jaci.openrio.gradle.frc.FRCJavaArtifact
+import jaci.openrio.gradle.frc.RoboRIO
 
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.60'
-    id "edu.wpi.first.GradleRIO" version "2018.06.21"
+    id "jaci.openrio.gradle.GradleRIO" version "2018.03.06"
 }
 
 def ROBOT_CLASS = "org.team2471.workshop.Robot"
@@ -11,15 +12,14 @@ def ROBOT_CLASS = "org.team2471.workshop.Robot"
 deploy {
     targets {
         target("roborio", RoboRIO) {
-            team = getTeamOrDefault(2471)
+            team = 2471
+            addresses << "10.24.71.2"
         }
     }
     artifacts {
         // We still use FRCJavaArtifact since kotlin does respond as a Java build.
         artifact('frcKotlin', FRCJavaArtifact) {
             targets << "roborio"
-            // Debug can be overridden by command line, for use with VSCode
-            debug = getDebugOrDefault(false)
         }
     }
 }
@@ -40,7 +40,7 @@ dependencies {
 // knows where to look for our Robot Class.
 jar {
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_CLASS)
+    manifest GradleRIOPlugin.javaManifest(ROBOT_CLASS)
 }
 
 task wrapper(type: Wrapper) {
