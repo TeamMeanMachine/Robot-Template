@@ -1,4 +1,4 @@
 [submodule "meanlib"]
 	path = meanlib
 	url = https://github.com/TeamMeanMachine/meanlib.git
-	branch = master
+	branch = bunnybots2018
