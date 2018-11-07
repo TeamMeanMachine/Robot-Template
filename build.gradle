@@ -3,8 +3,8 @@ import jaci.openrio.gradle.frc.FRCJavaArtifact
 import jaci.openrio.gradle.frc.RoboRIO
 
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.2.60'
-    id "jaci.openrio.gradle.GradleRIO" version "2018.03.06"
+    id 'org.jetbrains.kotlin.jvm' version '1.3.0'
+    id 'jaci.openrio.gradle.GradleRIO' version '2018.03.06'
 }
 
 def ROBOT_CLASS = "org.team2471.workshop.Robot"
@@ -39,7 +39,7 @@ wpi {
 dependencies {
     compile wpilib()
     compile ctre()
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.0"
     compile project("meanlib")
 }
 
@@ -61,10 +61,4 @@ compileKotlin {
 
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
-}
-
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
 }
